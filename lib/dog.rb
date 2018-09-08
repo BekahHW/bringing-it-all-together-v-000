@@ -50,8 +50,11 @@ class Dog
     dog = self.new(name: name, breed: breed)
     dog.save
     dog
-
-  # DB[:conn].execute("SELECT * FROM dogs")
+ end
+ 
+ def self.find_by_id
+   
+   
  end
 
  
