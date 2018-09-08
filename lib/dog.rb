@@ -56,7 +56,7 @@ class Dog
    sql = "SELECT * FROM dogs WHERE id = ? LIMIT 1"
    
     result = DB[:conn].execute(sql, id).map do |row|
-      row.create
+      self.create(row)
 
  end
 
