@@ -60,7 +60,10 @@ class Dog
    Dog.new(id: result[0], name: result[1], breed: result[2])
  end
  
- def self.
+ def self.find_or_create_by
+   if self.id 
+     self.find_by_id(id)
+   else self.create()
 
 
  def update
