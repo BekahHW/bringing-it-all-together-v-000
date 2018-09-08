@@ -61,12 +61,16 @@ class Dog
  end
  
  def self.find_or_create_by(name:, breed:)
-   if self.name
-     binding.pry
-     self.find_by_name(name)
-   else self.create(name, breed)
+     dog = DB[:conn].execute("SELECT * FROM dogs WHERE name = ? AND breed = ?", name, breed)
+   if !dog.empty?
+     dog_new = dog[0]
+     dog_new = dog.new(dog_data[0], dog_data[1], dog_data[2])
+   else
+     dog = self.create(name: name, album: album)
+   end
+   dog
  end
- end
+
 
 
  def update
