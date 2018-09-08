@@ -57,7 +57,7 @@ class Dog
    
     result = DB[:conn].execute(sql, id).map do |row|
       self.create(row)
-
+end
  end
 
 
