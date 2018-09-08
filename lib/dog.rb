@@ -43,8 +43,10 @@ class Dog
  end
  
  def self.find_by_name(name)
-   dog = DB[:conn].execute("SELECT * FROM dogs WHERE name = ?, name")
- end
+  sql = "SELECT * FROM dogs WHERE name = ?"
+   result = DB[:conn].execute(sql, name)[1]
+   Dog.new(id: result[0], name: result[1], breed: result[2]) 
+  end
  
  def self.create(name:, breed:)
     dog = self.new(name: name, breed: breed)
